@@ -9,7 +9,7 @@ export const RoutesProvider = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={ROUTES.HOME} element={<LoginPage />} />
+        <Route path={ROUTES.LOGIN} element={<LoginPage />} />
         <Route path={ROUTES.REGISTER} element={<Register />} />
       </Routes>
     </BrowserRouter>

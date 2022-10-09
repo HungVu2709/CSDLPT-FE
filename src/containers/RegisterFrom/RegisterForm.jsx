@@ -51,9 +51,6 @@ const RegisterForm = ({ onSubmitRegister }) => {
         >
           <InputPassword />
         </FormItem>
-        <FormItem name="policy" valuePropName="checked">
-          <Checkbox content={"I agree to privacy policy & terms"}></Checkbox>
-        </FormItem>
         <FormItem containerClass="mt-10">
           <Button
             type="primary"
