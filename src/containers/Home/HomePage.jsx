@@ -8,6 +8,7 @@ import Grid from "../../components/common/Grid";
 import Helmet from "../../components/common/Helmet";
 import PolicyCard from "./PolicyCard";
 import Section, { SectionBody, SectionTitle } from "./Section";
+import ProductCard from "../Product/ProductCard";
 import SlideProduct from "./SlideProduct";
 
 const HomePage = () => {
@@ -19,6 +20,22 @@ const HomePage = () => {
       <Helmet title="Trang chủ">
         <Section>
           <SectionBody>
+            <Grid col={3} mdCol={2} smCol={1} gap={20}>
+              {products.map((item) => (
+                <ProductCard
+                  key={`catalog-${item.id}`}
+                  image={item.image[1]}
+                  name={item.name}
+                  price={item.price}
+                  id={item.id}
+                />
+              ))}
+            </Grid>
+          </SectionBody>
+        </Section>
+
+        <Section>
+          <SectionBody>
             <Grid col={4} mdCol={2} smCol={1} gap={20}>
               {policy.map((item, index) => (
                 <Link key={`policy-${index}`} to="#">
@@ -28,6 +45,7 @@ const HomePage = () => {
             </Grid>
           </SectionBody>
         </Section>
+
         <Section>
           <SectionTitle>Related Products</SectionTitle>
           <SectionBody>
