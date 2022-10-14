@@ -10,6 +10,7 @@ import PolicyCard from "./PolicyCard";
 import Section, { SectionBody, SectionTitle } from "./Section";
 import ProductCard from "../Product/ProductCard";
 import SlideProduct from "./SlideProduct";
+import { formatCurrency } from "@src/utils/formatCurrency";
 
 const HomePage = () => {
   // const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ const HomePage = () => {
                   key={`catalog-${item.id}`}
                   image={item.image[1]}
                   name={item.name}
-                  price={item.price}
+                  price={formatCurrency(item.price)}
                   id={item.id}
                 />
               ))}

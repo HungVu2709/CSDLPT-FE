@@ -1,3 +1,4 @@
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "../product/ProductCard";
@@ -36,7 +37,7 @@ const SlideProduct = (props) => {
             id={item.id}
             image={item.image[0]}
             name={item.name}
-            price={item.price}
+            price={formatCurrency(item.price)}
           />
         </SwiperSlide>
       ))}

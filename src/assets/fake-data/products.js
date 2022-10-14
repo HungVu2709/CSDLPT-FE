@@ -1,5 +1,7 @@
 import product_01_image_01 from "./../images/Ip13-green.jpg";
 import product_02_image_02 from "./../images/iphone12-rmbg.png";
+import product_03_image_03 from "./../images/Ip13-pink.webp";
+import product_04_image_04 from "./../images/Ip13-promax-gold.png";
 
 const products = [
   {
@@ -7,10 +9,15 @@ const products = [
     name: "Iphone 13 Pro",
     price: "39999999",
     short_description: "Iphone 13 doi moi nhat",
-    image: [product_01_image_01, product_02_image_02],
+    image: [
+      product_01_image_01,
+      product_02_image_02,
+      product_03_image_03,
+      product_04_image_04,
+    ],
     full_description: "Iphone 13 doi moi nhat vang den trang full des",
     quantity: "10",
-    color: "white",
+    color: "red",
     product_type: {
       id: "1",
       name: "iPhone",
@@ -23,7 +30,12 @@ const products = [
     name: "Iphone 13 Pro Max",
     price: "44999999",
     short_description: "Iphone 13 doi moi nhat",
-    image: [product_01_image_01, product_02_image_02],
+    image: [
+      product_01_image_01,
+      product_02_image_02,
+      product_03_image_03,
+      product_04_image_04,
+    ],
     full_description: "Iphone 13 doi moi nhat vang den trang full des",
     quantity: "10",
     color: "white",
@@ -39,7 +51,12 @@ const products = [
     name: "Iphone 14",
     price: "49999999",
     short_description: "Iphone 13 doi moi nhat",
-    image: [product_01_image_01, product_02_image_02],
+    image: [
+      product_01_image_01,
+      product_02_image_02,
+      product_03_image_03,
+      product_04_image_04,
+    ],
     full_description: "Iphone 13 doi moi nhat vang den trang full des",
     quantity: "10",
     color: "white",
@@ -55,7 +72,12 @@ const products = [
     name: "Iphone 15",
     price: "49999999",
     short_description: "Iphone 13 doi moi nhat",
-    image: [product_01_image_01, product_02_image_02],
+    image: [
+      product_01_image_01,
+      product_02_image_02,
+      product_03_image_03,
+      product_04_image_04,
+    ],
     full_description: "Iphone 13 doi moi nhat vang den trang full des",
     quantity: "10",
     color: "white",
@@ -71,7 +93,12 @@ const products = [
     name: "Iphone 16",
     price: "49999999",
     short_description: "Iphone 13 doi moi nhat",
-    image: [product_01_image_01, product_02_image_02],
+    image: [
+      product_01_image_01,
+      product_02_image_02,
+      product_03_image_03,
+      product_04_image_04,
+    ],
     full_description: "Iphone 13 doi moi nhat vang den trang full des",
     quantity: "10",
     color: "white",
@@ -87,7 +114,12 @@ const products = [
     name: "Iphone 17",
     price: "49999999",
     short_description: "Iphone 13 doi moi nhat",
-    image: [product_01_image_01, product_02_image_02],
+    image: [
+      product_01_image_01,
+      product_02_image_02,
+      product_03_image_03,
+      product_04_image_04,
+    ],
     full_description: "Iphone 13 doi moi nhat vang den trang full des",
     quantity: "10",
     color: "white",
@@ -107,7 +139,7 @@ const getProducts = (count) => {
   const start = Math.floor(Math.random() * (max - min) + min);
   return products.slice(start, start + count);
 };
-const getProductBySlug = (id) => products.find((e) => e.id === id);
+const getProductById = (id) => products.find((e) => e.id === id);
 
 const getCartItemsInfo = (cartItems) => {
   let res = [];
@@ -126,7 +158,7 @@ const getCartItemsInfo = (cartItems) => {
 const productData = {
   getAllProducts,
   getProducts,
-  getProductBySlug,
+  getProductById,
   getCartItemsInfo,
 };
 
