@@ -1,22 +1,78 @@
+import { addItem } from "@src/redux/slice/cartItems";
+import { remove } from "@src/redux/slice/productSlice";
 import { formatCurrency } from "@src/utils/formatCurrency";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import SwiperCore, { Navigation, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ButtonDunk from "../../components/common/ButtonDunk";
+import { withRouter } from "./../../hook/withRouter";
 
 const ProductView = (props) => {
+  const dispatch = useDispatch();
+
   const [activeThumb, setActiveThumb] = useState();
   const [capacity, setCapacity] = useState("");
-  const [cartAmount, setCartAmount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   const product = props.product;
 
-  const handleAddToCart = () => {
-    console.log("Add to Cart");
+  const check = () => {
+    if (capacity === undefined) {
+      alert("Please pick capacity!");
+      return false;
+    }
+    return true;
   };
 
+  const updateQuantity = (type) => {
+    if (type === "plus") {
+      setQuantity(quantity + 1);
+    } else if (type === "minus") {
+      setQuantity(quantity - 1 < 1 ? 1 : quantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (check()) {
+      const newItem = {
+        id: product.id,
+        color: product.color,
+        capacity: capacity,
+        quantity: quantity,
+        price: product.price,
+      };
+      dispatch(addItem(newItem));
+    }
+  };
+
+  const handleGoToCart = () => {
+    console.log("Mua ngay");
+  };
+
+  useEffect(() => {
+    setQuantity(1);
+    setCapacity(undefined);
+  }, [product]);
+
   if (!product) {
+    product = {
+      id: "",
+      name: "",
+      price: "",
+      short_description: "",
+      full_description: "",
+      image: [],
+      quantity: "",
+      color: "",
+      product_type: {
+        id: "",
+        name: "",
+      },
+      capacity: [],
+      status: true,
+    };
     return <div>Loading</div>;
   }
 
@@ -103,16 +159,16 @@ const ProductView = (props) => {
                 <div className="d-flex justify-content-center align-items-center select-quantity">
                   <div
                     className="product__info__item__quantity__btn"
-                    onClick={() => handleAddToCart()}
+                    onClick={() => updateQuantity("minus")}
                   >
                     <i className="bx bx-minus" />
                   </div>
                   <div className="product__info__item__quantity__input">
-                    {cartAmount}
+                    {quantity}
                   </div>
                   <div
                     className="product__info__item__quantity__btn"
-                    onClick={() => handleAddToCart()}
+                    onClick={() => updateQuantity("plus")}
                   >
                     <i className="bx bx-plus" />
                   </div>
@@ -121,11 +177,18 @@ const ProductView = (props) => {
             </div>
 
             <div className="product__info__item">
-              <ButtonDunk
-                type="button"
-                text="Add to cart"
-                onClick={() => handleAddToCart()}
-              />
+              <div className="product__info__item__button">
+                <ButtonDunk
+                  type="button"
+                  text="Add to cart"
+                  onClick={() => handleAddToCart()}
+                />
+                <ButtonDunk
+                  type="button"
+                  text="Mua ngay"
+                  onClick={() => handleGoToCart()}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -134,4 +197,4 @@ const ProductView = (props) => {
   );
 };
 
-export default ProductView;
+export default withRouter(ProductView);

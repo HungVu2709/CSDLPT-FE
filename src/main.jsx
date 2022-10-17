@@ -4,8 +4,13 @@ import App from "./App";
 import "./sass/index.scss";
 import "boxicons";
 
+import { store } from "./redux/reducers/index";
+import { Provider } from "react-redux";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import Helmet from "../../components/common/Helmet";
 import Section, { SectionBody, SectionTitle } from "../home/Section";
-import SlideProduct from "../home/SlideProduct";
+import SlideProduct from "../Home/SlideProduct";
 import ProductView from "./ProductView";
 
 const ProductDetail = (props) => {

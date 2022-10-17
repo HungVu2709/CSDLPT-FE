@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const ProductCard = (props) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="product-card">
       <Link to={`/catalog/${props.id}`}>

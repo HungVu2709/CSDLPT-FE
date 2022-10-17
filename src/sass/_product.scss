@@ -101,6 +101,10 @@
     &__item {
       margin-top: 2rem;
 
+      &__button {
+        margin-top: 2rem;
+        display: flex;
+      }
       &__price {
         color: $main-color;
         font-size: 2rem;
